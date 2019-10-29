@@ -13,10 +13,10 @@ gem 'foreman'
 
 group :development do
   gem 'sqlite3', '<1.4'
+  gem 'dotenv'
   gem 'shotgun'
   gem 'tux'
   gem 'pry'
-  gem "dotenv"
 end
 
 group :test do
