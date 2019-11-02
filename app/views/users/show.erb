@@ -1,14 +1,13 @@
-<% if Helpers.logged_in?(session) %>
-      
     <h1>Welcome, <%= @user.username %>.</h1>
     <h2>What would you like to do today?</h2>
-      <ul>
-        <li><a href="/posts/new">Write new entry</a></li>
-        <li><a href="/posts">Show all entries</a></li>
-        <li><a href="/user/<%= @user.id %>/edit">Edit user details</a></li>
-      </ul>
+      
+        <a href="/posts/new">Write new entry</a><br>
+        <a href="/posts">Show all entries</a><br>
+        <a href="/user/<%= @user.id %>/edit">Edit user details</a><br>
+      
 
     <form method="POST" action="/logout">
-    <input type="text" value="Logout">
+        <input type="submit" value="Logout">
     </form>
-<% end %>
+    
+
