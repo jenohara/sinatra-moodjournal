@@ -1,39 +1,72 @@
 class UsersController < ApplicationController
 
-  # GET: /users
-  get "/users" do
-    erb :"/users/index.html"
+# user login
+  get "/login" do
+    erb :'login'
+  end  
+
+  post "/login" do
+    @user = User.find_by(email: params[:email])
+
+    if @user.authenticate(params[:password])
+      session[:user_id] = @user.id
+      redirect to "/user/#{@user.id}"
+    else
+
+      redirect to '/login'
+    end
   end
 
-  # GET: /users/new
-  get "/users/new" do
-    erb :"/users/new.html"
+  # user signup
+  get "/signup" do
+    erb :'signup'
   end
 
-  # POST: /users
-  post "/users" do
-    user = User.find_by(username: params[:username]) || User.create(params)
-    session[:user_id] = user.id
-    redirect "/users/:id/index"
+  get '/users/:id' do
+    "this will be the users show route"
   end
 
-  # GET: /users/5
-  get "/users/:id" do
-    erb :"/users/show.html"
-  end
+#   # GET: /users/new   new user sign up form
+#   get "/users/new" do
+#     erb :"/users/new.html"
+#   end
 
-  # GET: /users/5/edit
-  get "/users/:id/edit" do
-    erb :"/users/edit.html"
-  end
+ 
+#   # POST: /users creates a new user
+#   post "/users" do
+#     @user = User.create(username: params[:username], email: params[:email], password: params[:password])
+#     session[:user_id] = @user.id
+#     redirect "/users/index"
+#   end
 
-  # PATCH: /users/5
-  patch "/users/:id" do
-    redirect "/users/:id"
-  end
+#   # GET: /users/5
+#   # get "/users/:id" do
+#   #   @user = User.find_by(username: params[:username])
+#   #   erb :"/users/show.html"
+#   # end
 
-  # DELETE: /users/5/delete
-  delete "/users/:id/delete" do
-    redirect "/users"
-  end
+#   # GET: /users/5/edit
+#   get "/users/:id/edit" do
+#     erb :"/users/edit.html"
+#   end
+
+#   # PATCH: /users/5
+#   patch "/users/:id" do
+#     redirect "/users/:id"
+#   end
+
+#   # DELETE: /users/5/delete
+#   delete "/users/:id/delete" do
+#     redirect "/"
+#   end
+
+
+
+
+#  # user logout
+#   get '/sessions/logout' do
+#     session.clear
+#     redirect '/'
+#     end
+#   end
 end
