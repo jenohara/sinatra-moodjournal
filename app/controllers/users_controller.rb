@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-# user login
+  # user login
   get "/login" do
     erb :'login'
   end  
@@ -29,6 +29,7 @@ class UsersController < ApplicationController
         redirect to "/users/#{@user.id}"
     else
       redirect '/signup'
+    end
   end
 
   # user show page - lists the available options: 
@@ -39,7 +40,7 @@ class UsersController < ApplicationController
   end
 
  # user logout
-  get '/logout' do
+  post '/logout' do
     session.clear
     redirect '/'
   end
