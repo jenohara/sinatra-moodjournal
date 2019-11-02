@@ -13,10 +13,17 @@
 
   /* --- Welcome Page Styles --- */
   body {
-    background-color: lightblue;
+    background-color: turquoise;
     color: #333;
     font-family: Sans-Serif;
     line-height: 18px;
+  }
+
+  .img-header {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
   }
 
   .wrapper {
@@ -37,6 +44,7 @@
 
   h2 {
     border-bottom: 2px solid #ccc;
+    text-align: center;
     font-size: 24px;
     line-height: 36px;
     margin-bottom: 16px;
@@ -49,6 +57,7 @@
 
   p {
     margin-bottom: 18px;
+    text-align: center;
   }
 
   .main {
@@ -56,16 +65,10 @@
   }
 
   .content {
-    float: left;
     width: 60%; /* 480px / 800px */
-  }
-
-  .sidebar {
-    background: #eee;
-    border: 1px solid #ccc;
-    float: right;
-    padding: 2.08333333333%; /* 5px / 240px */
-    width: 30%; /* 240px / 800px */
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .sidebar ul {
@@ -75,6 +78,14 @@
   .branding {
     clear: both;
   }
+
+  .buttons {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+   
 
   footer.branding {
     border-top: 2px solid #ccc;
@@ -112,4 +123,29 @@
     font-size: 18px;
     line-height: 24px;
   }
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+  background-color: #111;
 }
