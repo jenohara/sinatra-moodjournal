@@ -22,22 +22,16 @@ class UsersController < ApplicationController
     erb :'signup'
   end
 
+  post "/users" do
+    @user = User.create(username: params[:username], email: params[:email], password: params[:password])
+        session[:user_id] = @user.id
+        redirect to "/users/#{@user.id}"
+  end
+
   get '/users/:id' do
     "this will be the users show route"
   end
 
-#   # GET: /users/new   new user sign up form
-#   get "/users/new" do
-#     erb :"/users/new.html"
-#   end
-
- 
-#   # POST: /users creates a new user
-#   post "/users" do
-#     @user = User.create(username: params[:username], email: params[:email], password: params[:password])
-#     session[:user_id] = @user.id
-#     redirect "/users/index"
-#   end
 
 #   # GET: /users/5
 #   # get "/users/:id" do
