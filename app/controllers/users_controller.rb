@@ -8,7 +8,7 @@ class UsersController < ApplicationController
   post "/login" do
     @user = User.find_by(email: params[:email])
 
-    if @user.authenticate(params[:password])
+    if @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id
       redirect to "/users/#{@user.id}"
     else
@@ -23,44 +23,25 @@ class UsersController < ApplicationController
   end
 
   post "/users" do
-    @user = User.create(username: params[:username], email: params[:email], password: params[:password])
+    @user = User.new(params)
+    if @user.save
         session[:user_id] = @user.id
         redirect to "/users/#{@user.id}"
+    else
+      redirect '/signup'
   end
 
+  # user show page - lists the available options: 
+  # write new, show all and logout
   get '/users/:id' do
-    "this will be the users show route"
+    @user = User.find_by(id: params[:id])
+    erb :'/users/show'
   end
 
+ # user logout
+  get '/logout' do
+    session.clear
+    redirect '/'
+  end
 
-#   # GET: /users/5
-#   # get "/users/:id" do
-#   #   @user = User.find_by(username: params[:username])
-#   #   erb :"/users/show.html"
-#   # end
-
-#   # GET: /users/5/edit
-#   get "/users/:id/edit" do
-#     erb :"/users/edit.html"
-#   end
-
-#   # PATCH: /users/5
-#   patch "/users/:id" do
-#     redirect "/users/:id"
-#   end
-
-#   # DELETE: /users/5/delete
-#   delete "/users/:id/delete" do
-#     redirect "/"
-#   end
-
-
-
-
-#  # user logout
-#   get '/sessions/logout' do
-#     session.clear
-#     redirect '/'
-#     end
-#   end
 end
