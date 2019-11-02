@@ -8,4 +8,6 @@ use Rack::MethodOverride
 
 
 use UsersController
+use JournalEntriesController
 run ApplicationController
+
