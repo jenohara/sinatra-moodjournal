@@ -1,1 +1,7 @@
-<h1>This is the Model's index page.</h1>
+<h1>Here are all your journal entries:</h1>
+<% @journal_entries.each do |journal_entry| %>
+  <h4><a href="/journal_entries/<%= journal_entry.id %>"><%= journal_entry.created_at %></a></h4>
+  <p><%= journal_entry.content %></p>
+  
+  <br><br>
+<% end %>
