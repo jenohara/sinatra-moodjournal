@@ -7,7 +7,13 @@
 
 <br>
 <br>
-<a href="/journal_entries/<%= @journal_entry.id %>/edit">Edit</a>
 
-<a href="/journal_entries/">Delete</a>
+<form action="/journal_entries/<%= @journal_entry.id %>/edit" >
+    <input type="submit" value="Edit">
+</form>
+
+ <form action="/journal_entries/<%= @journal_entry.id %>" method="post">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="submit" name="" value="Delete">
+  </form>
 
