@@ -1,1 +1,31 @@
-<h1>Insert the form to create a new instance of your model.</h1>
+<h1>Welcome to your journal</h1>
+
+<form method="POST" action="/journal_entries">
+<h3>Please select the date you'd like to write an entry for:</h3>
+<input type="date" name="date">
+
+<h3>My moods:</h3>
+  <div class="row"> 
+    <div class="column">
+        <input type="checkbox" name="happy" value="happy"> Happy<br>
+        <input type="checkbox" name="bored" value="bored"> Bored<br>
+       <input type="checkbox" name="angry" value="angry"> Angry<br>
+    </div>
+    <div class="column">
+        <input type="checkbox" name="excited" value="excited"> Excited<br>
+        <input type="checkbox" name="tired" value="tired"> Tired<br>
+        <input type="checkbox" name="frustrated" value="frustrated"> Frustrated<br>  
+    </div>
+    <div class="column">
+        <input type="checkbox" name="calm" value="calm"> Calm<br>
+        <input type="checkbox" name="sad" value="sad"> Sad<br>
+        <input type="checkbox" name="hurting" value="hurting"> Hurting<br>
+    </div>
+  </div>
+  
+  <br>
+  <h3>Comments:</h3>
+    <textarea name="content" value="content" rows="20" cols="90"></textarea>
+  <br>
+  <input type="submit" value="Save">
+</form>
