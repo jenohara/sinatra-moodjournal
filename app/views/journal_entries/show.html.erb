@@ -1,1 +1,13 @@
-<h1>This is the show page for an individual instance of your model.</h1>
+<h3>Entry for: <%= @journal_entry.date %> </h3>
+<h4>The moods of the day:</h4>
+    
+
+<h4>Todays comments:</h4>
+<%= @journal_entry.content %>
+
+<br>
+<br>
+<a href="/journal_entries/<%= @journal_entry.id %>/edit">Edit</a>
+
+<a href="/journal_entries/">Delete</a>
+
