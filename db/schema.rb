@@ -27,15 +27,7 @@ ActiveRecord::Schema.define(version: 20191108213732) do
   end
 
   create_table "moods", force: :cascade do |t|
-    t.boolean "happy"
-    t.boolean "bored"
-    t.boolean "angry"
-    t.boolean "excited"
-    t.boolean "tired"
-    t.boolean "frustrated"
-    t.boolean "calm"
-    t.boolean "sad"
-    t.boolean "hurting"
+    t.string "mood_type"
   end
 
   create_table "users", force: :cascade do |t|

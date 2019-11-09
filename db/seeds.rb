@@ -8,3 +8,13 @@ JournalEntry.create(date: "04/11/2019", content:"It's a rainy day in Nottingham"
 
 lou.journal_entries.create(date: "05/11/2019", content:"Lets see if this works!")
 pheebs.journal_entries.create(date: "07/11/2019", content:"Another day, another line of code")
+
+Mood.create(mood_type: "Happy")
+Mood.create(mood_type: "Bored")
+Mood.create(mood_type: "Angry")
+Mood.create(mood_type: "Excited")
+Mood.create(mood_type: "Tired")
+Mood.create(mood_type: "Frustrated")
+Mood.create(mood_type: "Calm")
+Mood.create(mood_type: "Sad")
+Mood.create(mood_type: "Hurting")
