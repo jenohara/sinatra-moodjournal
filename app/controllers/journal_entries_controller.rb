@@ -16,8 +16,7 @@ class JournalEntriesController < ApplicationController
   post "/journal_entries" do 
     redirect_if_not_logged_in
       if params[:content] != ""
-      @journal_entry = JournalEntry.create(date: params[:date], content: params[:content], user_id: current_user.id)
-      @journal_entry.moods.create(happy: params[:happy], bored: params[:bored], angry: params[:angry], excited: params[:excited], tired: params[:tired], frustrated: params[:frustrated], calm: params[:calm], sad: params[:sad], hurting: params[:hurting], user_id: current_user.id, journal_entry_id: @journal_entry.id)
+      @journal_entry = current_user.journal_entries.create(date: params[:date], content: params[:content], mood_ids: params[:mood_ids])
       flash[:message] = "Journal entry successfully created." if @journal_entry.id
       redirect "/journal_entries/#{@journal_entry.id}"
     else
@@ -28,49 +27,48 @@ class JournalEntriesController < ApplicationController
   
   # GET: /journal_entries/5
   get "/journal_entries/:id" do
-    if logged_in?
+    redirect_if_not_logged_in
       set_journal_entry
       erb :"/journal_entries/show.html"
-    else
-      redirect to "/"
-    end
   end
 
   # GET: /journal_entries/5/edit
   get "/journal_entries/:id/edit" do
-    if logged_in?
+    redirect_if_not_logged_in
       set_journal_entry
-      erb :"/journal_entries/edit.html"
-    else
-      redirect to "/"
-    end
+      if authorized_to_edit?(@journal_entry)
+        erb :'/journal_entries/edit.html'
+      else
+        redirect "users/#{current_user.id}"
+      end
   end
 
   # PATCH: /journal_entries/5
   patch '/journal_entries/:id' do
-    if logged_in?
-
+    redirect_if_not_logged_in
       set_journal_entry
+
       if @journal_entry.user == current_user && params[:content] != ""
-        @journal_entry.update(date: params[:date], happy: params[:happy], bored: params[:bored], angry: params[:angry], excited: params[:excited], tired: params[:tired], frustrated: params[:frustrated], calm: params[:calm], sad: params[:sad], hurting: params[:hurting], content: params[:content], user_id: current_user.id)
+       
+       @journal_entry.update(date: params[:date], content: params[:content], mood_ids: params[:mood_ids])
+       
         redirect to "/journal_entries/#{@journal_entry.id}"
       else
         redirect to "users/#{current_user.id}"
       end
-    else
-      redirect to "/"
-    end
   end
 
   # DELETE: /journal_entries/5/delete
   delete "/journal_entries/:id" do
-    if logged_in?
+    redirect_if_not_logged_in
       set_journal_entry
-      @journal_entry.delete
-      redirect '/journal_entries'
-    else
-      redirect to "/"
-    end
+      if authorized_to_edit?(@journal_entry)
+        @journal_entry.destroy
+        flash[:message] = "Successfully deleted that entry."
+        redirect '/journal_entries'
+      else
+        redirect '/journal_entries'
+      end
   end
 
   private
