@@ -1,7 +1,12 @@
 <h3>Entry for: <%= @journal_entry.date %> </h3>
 <h4>The moods of the day:</h4>
     
-
+    <% @journal_entry.moods.each do |mood|%>
+    <%= mood.mood_type %>
+    <br>
+    <% end %>
+    
+<br>
 <h4>Todays comments:</h4>
 <%= @journal_entry.content %>
 

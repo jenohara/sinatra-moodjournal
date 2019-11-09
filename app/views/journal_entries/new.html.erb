@@ -7,22 +7,23 @@
 <h3>My moods:</h3>
   <div class="row"> 
     <div class="column">
-        <input type="checkbox" name="journal_entry[moods][]" id="<%= mood.id%>"value="happy"> Happy<br>
-        <input type="checkbox" name="journal_entry[moods][]" id="<%= mood.id%>"value="bored"> Bored<br>
-       <input type="checkbox" name="journal_entry[moods][]" id="<%= mood.id%>"value="angry"> Angry<br>
+    <% Mood.all[0..2].each do |mood| %>
+      <input type="checkbox" name="mood_ids[]" value="<%= mood.id%>"> <%= mood.mood_type%><br>
+    <% end%>
+      
     </div>
     <div class="column">
-        <input type="checkbox" name="journal_entry[moods][]" id="<%= mood.id%>"value="excited"> Excited<br>
-        <input type="checkbox" name="journal_entry[moods][]" id="<%= mood.id%>"value="tired"> Tired<br>
-        <input type="checkbox" name="journal_entry[moods][]" id="<%= mood.id%>"value="frustrated"> Frustrated<br>  
-    </div>
+     <% Mood.all[3..5].each do |mood| %>
+      <input type="checkbox" name="mood_ids[]" value="<%= mood.id%>"> <%= mood.mood_type%><br>
+    <% end%>
+   </div>
     <div class="column">
-        <input type="checkbox" name="journal_entry[moods][]" id="<%= mood.id%>"value="calm"> Calm<br>
-        <input type="checkbox" name="journal_entry[moods][]" id="<%= mood.id%>"value="sad""> Sad<br>
-        <input type="checkbox" name="journal_entry[moods][]" id="<%= mood.id%>"value="hurting"> Hurting<br>
-    </div>
+       <% Mood.all[6..8].each do |mood| %>
+      <input type="checkbox" name="mood_ids[]" value="<%= mood.id%>"> <%= mood.mood_type%><br>
+    <% end%>
   </div>
-  
+  </div>
+
   <br>
   <h3>Comments:</h3>
     <textarea name="content" value="content" rows="20" cols="90"></textarea>
