@@ -1,36 +1,28 @@
 class JournalEntriesController < ApplicationController
   
   get '/journal_entries' do
-    if logged_in?
+    redirect_if_not_logged_in
       @journal_entries = current_user.journal_entries
       erb :'journal_entries/index.html'
-    else
-      redirect to "/"
-    end
   end
 
   # GET: /journal_entries/new
   get "/journal_entries/new" do
-    if logged_in?
-      erb :"/journal_entries/new.html"
-    else
-      redirect to "/"
-    end
+    redirect_if_not_logged_in
+    erb :"/journal_entries/new.html"
   end
 
   # POST: /journal_entries
   post "/journal_entries" do 
-    if !logged_in?
-      redirect to "/"
-    end
-    if params[:content] != ""
-    @journal_entry = JournalEntry.create(date: params[:date], content: params[:content], user_id: current_user.id)
-    @journal_entry.moods.create(happy: params[:happy], bored: params[:bored], angry: params[:angry], excited: params[:excited], tired: params[:tired], frustrated: params[:frustrated], calm: params[:calm], sad: params[:sad], hurting: params[:hurting], user_id: current_user.id, journal_entry_id: @journal_entry.id)
-    binding.pry
-    redirect "/journal_entries/#{@journal_entry.id}"
-    
+    redirect_if_not_logged_in
+      if params[:content] != ""
+      @journal_entry = JournalEntry.create(date: params[:date], content: params[:content], user_id: current_user.id)
+      @journal_entry.moods.create(happy: params[:happy], bored: params[:bored], angry: params[:angry], excited: params[:excited], tired: params[:tired], frustrated: params[:frustrated], calm: params[:calm], sad: params[:sad], hurting: params[:hurting], user_id: current_user.id, journal_entry_id: @journal_entry.id)
+      flash[:message] = "Journal entry successfully created." if @journal_entry.id
+      redirect "/journal_entries/#{@journal_entry.id}"
     else
-      redirect to '/journal_entries/new'
+      flash[:errors] = "Something went wrong - you must provide content for your entry."
+      redirect '/journal_entries/new'
     end
   end
   
