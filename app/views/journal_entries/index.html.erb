@@ -1,6 +1,10 @@
 <h1>Here are all your journal entries:</h1>
 <% @journal_entries.each do |journal_entry| %>
-  <h4><a href="/journal_entries/<%= journal_entry.id %>"><%= journal_entry.created_at %></a></h4>
+  <h4><a href="/journal_entries/<%= journal_entry.id %>"><%= journal_entry.date %></a></h4>
+  <p>My moods:
+  <% journal_entry.moods.each do |mood| %>
+  <%= mood.mood_type %>
+  <% end %></p>
   <p><%= journal_entry.content %></p>
   
   <br><br>
