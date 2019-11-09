@@ -1,9 +1,10 @@
 <h3>Editing the entry for: <%= @journal_entry.date %></h3>
 <h3>Please select the date you'd like to write an entry for:</h3>
-<input type="date" name="date">
 
 <form method="POST" action="/journal_entries/<%= @journal_entry.id %>">
 <input type="hidden" name="_method" value="patch">
+
+<input type="date" name="date" value="<%=@journal_entry.date %>">
 
 <h3>My moods:</h3>
   <div class="row"> 

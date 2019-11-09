@@ -7,7 +7,7 @@
 
 <br>
 <br>
-
+<% if authorized_to_edit?(@journal_entry) %>
 <form action="/journal_entries/<%= @journal_entry.id %>/edit" >
     <input type="submit" value="Edit">
 </form>
@@ -16,4 +16,4 @@
     <input type="hidden" name="_method" value="DELETE">
     <input type="submit" name="" value="Delete">
   </form>
-
+<% end %>

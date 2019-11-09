@@ -17,11 +17,15 @@
   
     <div class="nav">
      <ul>
-        <li><a href="/signup">Sign Up</a></li>
-        <li><a href="/login">Login</a></li>
-        <li><a href="/login">Log Out</a></li>
+     <% if logged_in? %>
+        <li><a href="/logout">Logout</a></li>
+        <li><a href="/journal_entries">All Entries</a></li>
         <li><a href="/journal_entries/new">New Entry</a></li>
-        <li><a href="/journal_entries">Home</a></li>
+      
+      <% else %>
+        <li><a href="/login">Login</a></li>
+        <li><a href="/signup">Sign Up</a></li>
+      <% end %>
       </ul>
     </div>
 

@@ -11,31 +11,39 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20191102185241) do
+ActiveRecord::Schema.define(version: 20191108213732) do
 
   create_table "journal_entries", force: :cascade do |t|
+    t.date     "date"
     t.string   "content"
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string   "date"
-    t.string   "happy"
-    t.string   "excited"
-    t.string   "calm"
-    t.string   "bored"
-    t.string   "tired"
-    t.string   "sad"
-    t.string   "angry"
-    t.string   "frustrated"
-    t.string   "hurting"
+  end
+
+  create_table "mood_journal_entries", force: :cascade do |t|
+    t.integer "journal_entry_id"
+    t.integer "mood_id"
+  end
+
+  create_table "moods", force: :cascade do |t|
+    t.boolean "happy"
+    t.boolean "bored"
+    t.boolean "angry"
+    t.boolean "excited"
+    t.boolean "tired"
+    t.boolean "frustrated"
+    t.boolean "calm"
+    t.boolean "sad"
+    t.boolean "hurting"
   end
 
   create_table "users", force: :cascade do |t|
+    t.string   "username"
     t.string   "email"
     t.string   "password_digest"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
-    t.string   "username"
   end
 
 end

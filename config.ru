@@ -9,5 +9,6 @@ use Rack::MethodOverride
 
 use UsersController
 use JournalEntriesController
+use MoodsController
 run ApplicationController
 
