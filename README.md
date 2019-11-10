@@ -1,17 +1,35 @@
-Moodjournal for tracking daily mood/activity
+Welcome to the Sinatra MoodJournal! 
 
-Index page show links for signing up and logging in
+Here you'll be able to create, track and grow your mindfulness around your everyday mood. Use it to track trends, identify triggers and journal about your day.
 
-User can create an account with username, email address and password
+Getting Started
+To run this app, clone the repo and run bundle install. The run shotgun to fire up a server. You should see the app running on localhost:9393.
 
-When logged in, user can view all their entries but no-one elses
+Prerequisites
+You will need to have Ruby installed on your machine - Linux or Mac.
 
-User can edit and delete each entry
+Video Links
+Watch this app being built! Links in the video_links.md file.
 
-When creating a new entry, user has a choice of date, although it defaults to today's date
-    Selection of checkboxes with moods: Excited, happy, calm, tired, stressed, sad, depressed, angry, frustrated, sleepy
-    Free form text area for journalling
-    Option to share entry or keep private
-    Upon 'submit', saves entry to database, displays it with a motivational quote of the day
+Built With
+Sinatra - Sinatra, our web framework
+sinatra-activerecord - Our friendly ORM
+sqlite3 - Our SQL DB gem
 
-Users have many entries, entries belong to a user
+Contributing
+Feel free to contribute! Please fork, clone, and submit a PR if you like!
+
+Versioning
+Version 1
+
+Authors
+© 2019 by J O'Hara
+
+License
+This project is licensed under the MIT License:
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
