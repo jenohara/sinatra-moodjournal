@@ -12,7 +12,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect to "/users/#{@user.id}"
     else
-
+      flash[:errors] = "Uh oh! Something went wrong. Are you registered? Please sign up or try again"
       redirect to '/login'
     end
   end

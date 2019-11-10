@@ -20,7 +20,7 @@ class JournalEntriesController < ApplicationController
       flash[:message] = "Journal entry successfully created." if @journal_entry.id
       redirect "/journal_entries/#{@journal_entry.id}"
     else
-      flash[:errors] = "Something went wrong - you must provide content for your entry."
+      flash[:errors] = "Something went wrong - did you add some content?"
       redirect '/journal_entries/new'
     end
   end
@@ -47,11 +47,9 @@ class JournalEntriesController < ApplicationController
   patch '/journal_entries/:id' do
     redirect_if_not_logged_in
       set_journal_entry
-
       if @journal_entry.user == current_user && params[:content] != ""
-       
        @journal_entry.update(date: params[:date], content: params[:content], mood_ids: params[:mood_ids])
-       
+        flash[:message] = "Successfully updated entry."
         redirect to "/journal_entries/#{@journal_entry.id}"
       else
         redirect to "users/#{current_user.id}"
@@ -64,7 +62,7 @@ class JournalEntriesController < ApplicationController
       set_journal_entry
       if authorized_to_edit?(@journal_entry)
         @journal_entry.destroy
-        flash[:message] = "Successfully deleted that entry."
+        flash[:message] = "Successfully deleted entry."
         redirect '/journal_entries'
       else
         redirect '/journal_entries'
