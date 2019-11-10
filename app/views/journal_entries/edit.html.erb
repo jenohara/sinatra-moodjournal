@@ -7,23 +7,11 @@
 <input type="date" name="date" value="<%=@journal_entry.date %>">
 
 <h3>My moods:</h3>
-  <div class="row"> 
-    <div class="column">
-    <% Mood.all[0..2].each do |mood| %>
-      <input type="checkbox" name="mood_ids[]" value="<%= mood.id%>" <%='checked' if @journal_entry.mood_ids.include?(mood.id) %>> <%= mood.mood_type%><br>
-    <% end%>
-      
-    </div>
-    <div class="column">
-     <% Mood.all[3..5].each do |mood| %>
-      <input type="checkbox" name="mood_ids[]" value="<%= mood.id%>" <%='checked' if @journal_entry.mood_ids.include?(mood.id) %>> <%= mood.mood_type%><br>
-    <% end%>
-   </div>
-    <div class="column">
-       <% Mood.all[6..8].each do |mood| %>
-      <input type="checkbox" name="mood_ids[]" value="<%= mood.id%>" <%='checked' if @journal_entry.mood_ids.include?(mood.id) %>> <%= mood.mood_type%><br>
-    <% end%>
-  </div>
+
+  <div>
+      <% Mood.all.each do |mood| %>
+        <input type="checkbox" name="mood_ids[]" value="<%= mood.id%>" <%='checked' if @journal_entry.mood_ids.include?(mood.id) %> > <%= mood.mood_type%><br>
+      <%end%>
   </div>
   
   <br>

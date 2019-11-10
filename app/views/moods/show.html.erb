@@ -1,1 +1,11 @@
-List all my moods
+<h3>Add new mood:</h3>
+<form action="/moods" method="POST">
+    <input type="text" name="mood_type">
+    <input type="submit" value="Add Mood">
+</form>
+<br>
+<h3>All my moods:</h3>
+<% @moods.each do |mood|%>
+    <p><%= mood.mood_type %></p>
+<% end %>
+<br>

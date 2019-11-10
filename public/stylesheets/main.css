@@ -14,7 +14,9 @@
   /* --- Welcome Page Styles --- */
   body {
     background-color: turquoise; 
-    background-image: url("sunset.jpg");
+    background-image: url("../images/sunset.jpg"); 
+    background-repeat: no-repeat;
+    background-size: cover;
     color: #333;
     font-family: Sans-Serif;
     line-height: 18px;
@@ -161,4 +163,10 @@ li a:hover {
   content: "";
   display: table;
   clear: both;
+}
+
+.random_img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
